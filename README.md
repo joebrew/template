@@ -1,0 +1,2 @@
+# template
+Documentation templating
