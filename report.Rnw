@@ -1,0 +1,104 @@
+\documentclass[17pt, spanish]{extarticle}
+%\documentclass[17pt]{article}
+%\documentclass[14pt]{extreport}
+\usepackage{lipsum} 
+
+\usepackage{changepage}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+
+\pagestyle {empty}
+
+\begin{document}
+% \SweaveOpts{concordance=TRUE}
+%\SweaveOpts{concordance=TRUE}
+
+%\title{\Sexpr{input$letter_title}}
+%\maketitle
+
+\begin{center}
+\begin{large}
+\Sexpr{input$letter_title}
+\end{large}
+\end{center}
+
+<<echo = FALSE>>=
+x <- joe(document_type = input$document_type,
+              amount = input$amount,
+              originator = input$originator,
+              witness = input$witness)
+date <-format(Sys.Date(), '%B %d, %Y')
+later_date <- format(Sys.Date() + 100, '%B %d, %Y')
+@
+
+\begin{Huge}
+\begin{center}
+\noindent \Sexpr{input$document_type} \\
+\end{center}
+\end{Huge}
+
+\begin{changemargin}{1cm}{1cm} 
+
+\begin{small}
+\emph{Between \Sexpr{input$originator} and Reblendable Entreprises LLC, on this \Sexpr{date}, as witnessed by \Sexpr{input$witness}, in accordance with US Jur 143-911.a, and reflecting the guidelines as laid out in the Kenyan Supreme Court memorandum on finance (132-11.cii).}
+\end{small}
+
+
+\end{changemargin}
+
+\begin{Large}
+\noindent \textbf{Introduction} \\
+\end{Large}
+
+\begin{tiny}
+\noindent \lipsum[1] 
+
+\noindent This agreement lays out the terms pertaining to the financing of no more than 10,000 trampolines or \Sexpr{input$amount} (whichever is of lesser value), on or before \Sexpr{later_date}. \\
+
+\end{tiny}
+
+
+
+\noindent \textbf{Obligations} \\
+
+\begin{tiny}
+\noindent \lipsum[5]
+\end{tiny}
+
+
+\noindent \textbf{Details} \\
+
+\begin{tiny}
+\noindent \lipsum[2] 
+
+\end{tiny}
+
+\noindent \textbf{In case of breach of contract} \\
+
+\begin{tiny}
+\noindent \lipsum[2] 
+
+\end{tiny}
+
+
+\vspace{10mm}
+
+\noindent Signed, \\
+
+
+
+\noindent \Sexpr{input$signed_by} \\ %(\Sexpr{input$writer_position}) \\
+\noindent (Reblendable, LLC) \\
+\vspace{3mm}
+
+\noindent \Sexpr{input$sb2} \\ %(\Sexpr{input$writer_position})
+\noindent (\Sexpr{input$originator}) \\
+\vspace{3mm}
+
+\noindent \Sexpr{input$witness} \\
+\noindent (Legal witness) 
+
+
+
+\end{document}
